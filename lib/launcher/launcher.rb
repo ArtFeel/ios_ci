@@ -40,7 +40,7 @@ class Launcher
 
   def close_simulator
     puts "Closing iPhone Simulator"
-    %x[ killall "iPhone Simulator" ]
+    %x[ ps -A | grep -e "launchd_sim" -e "simulator" -i | grep -v grep | awk '{print $1}' | xargs kill -9 ]
     puts ""
   end
 
